@@ -26,9 +26,9 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-           sed -i -e "s/<SUBSCRIPTION_ID>/$(SUBSCRIPTION_ID)/g" sklearn-diabetes.ipynb
-           sed -i -e "s/<RESOURCE_GROUP>/$(RESOURCE_GROUP)/g" sklearn-diabetes.ipynb
-           sed -i -e "s/<AML_WORKSPACE_NAME>/$(AZUREML_WORKSPACE_NAME)/g" sklearn-diabetes.ipynb
+           sed -i -e "s/<$(SUBSCRIPTION_ID)>/$($(Subscription_ID))/g" sklearn-diabetes.ipynb
+           sed -i -e "s/<$(RESOURCE_GROUP)>/$($(Resource_Group))/g" sklearn-diabetes.ipynb
+           sed -i -e "s/<AML_WORKSPACE_NAME>/$($($(AzureML_Workspace_Name)))/g" sklearn-diabetes.ipynb
            sed -i -e "s/DefaultAzureCredential/AzureCliCredential/g" sklearn-diabetes.ipynb
            papermill -k python sklearn-diabetes.ipynb sklearn-diabetes.output.ipynb
     workingDirectory: 'sdk/python/jobs/single-step/scikit-learn/diabetes'
